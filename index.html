@@ -65,9 +65,10 @@
 
             if(!Array.isArray(this.todos)) throw new Error(`'Todos' is not Array.`);
         
-            this.todos.forEach(item => {
+            todoList.todos.forEach(item => {
                 if(!item.hasOwnProperty('text')) throw new Error(`'TodoList' doesn't have 'text' property.`)
                 if(!item.hasOwnProperty('isCompleted')) throw new Error(`'TodoList' doesn't have 'isCompleted' property.`);
+                if(item === null || item === undefined) throw new Error(`todo is ${todoList.todos}`);
                 if(typeof item.text !== 'string') throw new Error(`'${item.text}' is not string.`);
                 if(typeof item.isCompleted !== 'boolean') throw new Error(`'${item.isCompleted}' is not boolean.`);
             });
