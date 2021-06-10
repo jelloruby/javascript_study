@@ -85,12 +85,19 @@
             todoListElem.innerHTML = todoListItem.join('');
         };
 
+        this.setState = function(nextTodos) {
+            this.todos = nextTodos;
+            this.render();
+        };
+
         this.render();
     };
 
     const todoList_1 = new TodoList(todos_1, 'todo-list-1');
     const todoList_2 = new TodoList(todos_2, 'todo-list-2');
     const todoList_3 = new TodoList(todos_3, 'todo-list-3');
+
+    todoList_1.setState(newTodos);
   </script>
 </body>
 
