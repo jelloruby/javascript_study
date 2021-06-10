@@ -72,6 +72,20 @@
                 if(typeof item.isCompleted !== 'boolean') throw new Error(`'${item.isCompleted}' is not boolean.`);
             });
         };
+
+        this.render = function() {
+            this.validateTodos();
+
+            const todoListElem = document.getElementById(listId);
+
+            const todoListItem = this.todos.map(item => (
+            item.isCompleted ? `<div><s>${item.text}</s></div>` : `<div>${item.text}</div>`
+            ));
+            
+            todoListElem.innerHTML = todoListItem.join('');
+        };
+
+        this.render();
     };
 
     const todoList_1 = new TodoList(todos_1, 'todo-list-1');
