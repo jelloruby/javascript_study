@@ -80,7 +80,7 @@
             const todoListElem = document.getElementById(listId);
 
             const todoListItem = this.todos.map(item => (
-            item.isCompleted ? `<div><s>${item.text}</s></div>` : `<div>${item.text}</div>`
+                item.isCompleted ? `<div><s>${item.text}</s></div>` : `<div>${item.text}</div>`
             ));
             
             todoListElem.innerHTML = todoListItem.join('');
