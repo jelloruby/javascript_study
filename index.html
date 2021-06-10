@@ -56,7 +56,22 @@
     ];
 
     function TodoList(todos, listId) {
+        this.todos = todos;
 
+        this.validateTodos = function() {
+            if(!(this instanceof TodoList)) throw new Error(`Function is not declared with 'new' keyword.`);
+
+            if(this.todos === null || this.todos === undefined) throw new Error(`'Todos' is ${this.todos}.`);
+
+            if(!Array.isArray(this.todos)) throw new Error(`'Todos' is not Array.`);
+        
+            this.todos.forEach(item => {
+                if(!item.hasOwnProperty('text')) throw new Error(`'TodoList' doesn't have 'text' property.`)
+                if(!item.hasOwnProperty('isCompleted')) throw new Error(`'TodoList' doesn't have 'isCompleted' property.`);
+                if(typeof item.text !== 'string') throw new Error(`'${item.text}' is not string.`);
+                if(typeof item.isCompleted !== 'boolean') throw new Error(`'${item.isCompleted}' is not boolean.`);
+            });
+        };
     };
 
     const todoList_1 = new TodoList(todos_1, 'todo-list-1');
